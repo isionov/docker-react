@@ -1,9 +1,13 @@
 sudo: required
 services:
   - docker
-
 before_install:
   - docker build -t iliawebdev/docker-react -f Dockerfile.dev .
-
 script:
   - docker run iliawebdev/docker-react npm run test
+deploy:
+  provider: heroku
+  api_key:
+    secure: E/UjnSO82fG0+4QOtbTPmXNV/rXymxU9SPRAJoUFVqh8rKDh1R3slmEzCgYnI3vqqBjBx32PzRkeNLBd1sVbLDlYuQ9rlauCiIw3qfyyBDdqeX7yXHRr0VtmFX3S/qW2KysovAVndnrFyjfgpihckvcuNjaRnBLy9nFIHFsep+TTY6TFx6GnYB6+QDrMW/TzZKzE35Ds42k+8tIX3VrSQhTGl2Zp1obZvefXFKihYjpoHtyl9FcDzwISZIOw525zlTpG60gtPc8eGLZ9cl++C4VxqberVnJ75fOVINrdA3h6kSeQEv6dOWsjeRnPnJIPU8OgJQYK966os4nDbTXAeJ5RuuF4FgY9jd5Mw3a3+6GahKrFS/xExpGcKXvNdT8bb1qFxZpbfSl2LRhWDrLCBvM8OGGi5fIblm7EArHmqMBnx/KH7ZQ4MJoWO/iy6Y6pR0af0qc8p2v3aLuBkIU1qwzaQLznhMIRABfrfUmRbr4i86XZ0taU1QZY1ymLsQGYnT4hy+TsDcRDoaTgYoWTWf1WVFjxCBRsBT/2yyAZki7HIBIvizOkZAgJULbNzxTtWoza4DG++IdyJBcV9CrYCNuSWhswNVFOLEKIZOSZzY2qxy2VrhlN+wTpUbDPHWNvK+kIvSxNZwxrC8Ehcok10xRoEdvSWM51/4hmFSAEdIk=
+  app: docker-react-i
+  on: master
